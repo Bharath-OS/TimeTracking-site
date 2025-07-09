@@ -1,0 +1,2 @@
+# TimeTracking-site
+This is a site that I made to track our time. Whenever we are studying or doing some tasks. You can clock-in in this website. And it will start a timer. You can take breaks and when you complete the you can clock-out of the site. Then it will show you how much time you worked.
