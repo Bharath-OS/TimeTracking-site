@@ -1,0 +1,8 @@
+img {
+    width: 50px;
+}
+
+.main-container {
+    max-width: 600px;
+    min-height: 60vh;
+}
