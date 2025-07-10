@@ -39,9 +39,9 @@
                         <img src="media/my-profile.jpg" alt="my profile picture" class="rounded-circle">
                     </div>
                     <div class="timer-conainer ps-3">
-                        <h class="my-name fw-normal m-0">
+                        <h5 class="my-name fw-normal m-0">
                             Bharath OS
-                        </h>
+                        </h5>
                         <h6 class="timer text-secondary m-0 fw-bold" id="Time"></h6>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
         <div class="container-fluid main-container d-flex flex-column justify-content-center align-items-center">
             <div class="body-container d-flex flex-column align-items-center">
                 <h4 class="text-dark text-center fw-normal  m-0" id="greeting"></h4>
-                <h5 class="text-success text-center fw-normal m-0 mb-5 mt-3" id="status">
-                    You are currently <span class="fw-bold">Working.</span>
+                <h5 class="text-secondary text-center fw-normal m-0 mb-5 mt-3" id="status">
+                    Clock in to start <span class="fw-bold">Working.</span>
                 </h5>
                 <button class="clockin btn btn-primary mb-5" id="clockin">Clock In</button>
                 <div class="work-related-container d-flex justify-content-center gap-4">
@@ -80,78 +80,7 @@
         </div>
     </main>
 
-    <script>
-        let timeLeft = 10;
-        let seconds = 0;
-        let minutes = 0;
-        let hours = 0;
-
-        // Set the greeting based on the current time
-        const hourNow = new Date().getHours();
-        if (hourNow >= 5 && hourNow < 12) {
-            document.getElementById('greeting').innerText = "Good Morning, Bharath OS";
-        }
-        else if (hourNow >= 12 && hourNow < 17) {
-            document.getElementById('greeting').innerText = "Good Afternoon, Bharath OS";
-        }
-        else if (hourNow >= 17 && hourNow < 21) {
-            document.getElementById('greeting').innerText = "Good Evening, Bharath OS";
-        }
-        else {
-            document.getElementById('greeting').innerText = "Good Night, Bharath OS";
-        }
-
-        const pauseButton = document.getElementById('takebreak');
-        const clockOutButton = document.getElementById('clockout');
-        const clockInButton = document.getElementById('clockin');
-
-        const display = document.getElementById('Time');
-
-        function updateTimer() {
-            seconds++;
-            if (seconds >= 60) {
-                seconds = 1;
-                minutes++;
-                if (minutes >= 60) {
-                    minutes = 1;
-                    hours++;
-                    if (hours >= 13) {
-                        hours = 1;
-                    }
-                }
-            }
-            display.innerText = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-        }
-        let timer;
-
-        clockInButton.addEventListener('click', () => {
-            document.getElementById('timer-section').classList.remove('d-none');
-            timer = setInterval(updateTimer, 1000);
-            clockInButton.classList.add('d-none');
-        });
-
-        pauseButton.addEventListener('click', () => {
-            if (pauseButton.innerText === "Take a Break") {
-                pauseButton.innerText = "Resume Work";
-                pauseButton.classList.replace('btn-warning', 'btn-primary');
-                clearInterval(timer);
-
-                document.getElementById('status').innerHTML = '<div class="text-danger text-center fw-normal m-0 mb-5 mt-2">You are on a <span class="fw-bold">Break</span> now.</div>';
-            }
-            else {
-                pauseButton.innerHTML = "Take a Break";
-                pauseButton.classList.replace('btn-primary', 'btn-warning');
-                timer = setInterval(updateTimer, 1000);
-                document.getElementById('status').innerHTML = '<div class="text-success text-center fw-normal m-0 mb-5 mt-2">You are currently <span class="fw-bold">Working.</span></div>';
-            }
-        });
-        clockOutButton.addEventListener('click', () => {
-            clearInterval(timer);
-            document.getElementById('status').innerHTML = `<div class="text-secondary text-center fw-normal m-0 mb-5 mt-2">You have worked <span class="text-success fw-bold">${hours} hours ${minutes} minutes </span> today.</div>`;
-            document.getElementById('timer-section').classList.add('d-none');
-            document.getElementById('clockin').classList.remove('d-none');
-        })
-    </script>
+    <script src="javascripts/script.js"></script>
 </body>
 
 </html>
